@@ -1,0 +1,682 @@
+\documentclass[aps,pre,preprint,superscriptaddress,amsmath,amssymb,nobibnotes,nofootinbib]{revtex4-2}
+
+\usepackage{amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Irreducible thermodynamic cost of oscillatory patterns\\
+in the Stuart--Landau normal form}
+
+\author{Eduard Bardakov}
+\email{edwardbardakov@gmail.com}
+\affiliation{Independent Researcher, Singapore}
+
+\date{\today}
+
+\begin{abstract}
+We show that the irreversible power dissipated by a stochastic
+Stuart--Landau oscillator with isotropic additive noise satisfies
+the exact bound $P_{\mathrm{irr}} \geq \omega^2 A^{*2}$,
+where $\omega$ is the oscillation frequency and
+$A^{*2} = \mu/g$ is the deterministic limit-cycle amplitude.
+The bound is tight (equality as noise vanishes) and
+has no analogue for steady patterns, where 
+anharmonicity pushes the mean amplitude below the 
+deterministic value. The temporal character of a 
+bifurcation---steady versus oscillatory---thus acts as 
+a thermodynamic dividing line within the 
+normal-form description.
+\end{abstract}
+
+\maketitle
+
+
+%═══════════════════════════════════════════════
+\section{Introduction}
+\label{sec:intro}
+%═══════════════════════════════════════════════
+
+Lower bounds on thermodynamic costs give physics 
+its sharpest no-go results: Carnot's bound on 
+engine efficiency~\cite{Carnot1824}, the Landauer 
+limit on the cost of erasing a bit~\cite{Landauer1961}, 
+and the thermodynamic uncertainty relation (TUR) linking 
+current precision to entropy 
+production~\cite{Barato2015,Gingrich2016}. In each case 
+the structure is the same---a desired output, a 
+minimum price, and an optimal protocol that achieves it.
+
+Non-equilibrium pattern-forming 
+systems~\cite{CrossHohenberg1993,Epstein1998,Marchetti2013}
+maintain organised structures by continuously 
+dissipating energy. Despite growing interest 
+in the thermodynamics of self-organisation~\cite{England2013,Falasco2020,Seifert2012}, 
+including recent work on the cost of maintaining 
+coherent oscillations~\cite{Cao2015,Oberreiter2022,Shiraishi2023},
+the question of whether pattern formation admits 
+a similar bound---a minimum cost for maintaining 
+a pattern of given amplitude---has remained open.
+
+Here we answer this question for the simplest 
+oscillatory case. For the Stuart--Landau normal 
+form (the universal description of dynamics near 
+a Hopf bifurcation~\cite{Kuramoto1984,CrossHohenberg1993}) 
+with isotropic additive noise, we prove
+\begin{equation*}
+P_{\mathrm{irr}} \;\geq\; \omega^2\,A^{*2},
+\end{equation*}
+where $P_{\mathrm{irr}}$ is the irreversible 
+(non-gradient) power, $\omega$ is the oscillation 
+frequency, and $A^{*2} = \mu/g$ is the deterministic 
+amplitude. The bound is exact---no perturbative or 
+near-equilibrium approximation is involved---and 
+tight, with equality as noise vanishes.
+
+The mechanism is geometric: in the two-dimensional 
+phase space of the oscillator, the polar Jacobian 
+factor converts an anharmonic radial distribution 
+into an exactly Gaussian distribution of $r^2$, 
+from which the bound follows immediately. This 
+cancellation requires both the two-dimensional 
+phase space \emph{and} the $O(2)$ rotational 
+symmetry of the Hopf normal form. When either 
+is absent---as in the one-dimensional pitchfork 
+bifurcation, or in two uncoupled steady modes---the 
+bound fails and anharmonicity drives the mean amplitude 
+below the deterministic value.
+
+The result thus identifies a \textbf{thermodynamic 
+dividing line} between bifurcation types: oscillatory 
+patterns carry an irreducible cost; steady patterns do not.
+We discuss the scope and limitations of this 
+statement in Sec.~\ref{sec:discussion}.
+
+
+%═══════════════════════════════════════════════
+\section{Setup}
+\label{sec:setup}
+%═══════════════════════════════════════════════
+
+The Stuart--Landau equation describes a noisy 
+oscillator near a Hopf bifurcation:
+\begin{equation}
+dz = \bigl[(\mu + i\omega)\,z - g\,|z|^2 z\bigr]\,dt 
+     + \sqrt{2\varepsilon}\,d\xi,
+\label{eq:SL}
+\end{equation}
+where $z = x_1 + i x_2 \in \mathbb{C}$, $\mu > 0$ 
+is the distance above onset, $\omega > 0$ is the 
+natural frequency, $g > 0$ is the nonlinear saturation, 
+$\varepsilon > 0$ is the noise intensity, and $d\xi$ 
+is isotropic complex white 
+noise.\footnote{Equations are interpreted in It\^o; 
+for additive noise the It\^o and Stratonovich forms 
+coincide.}
+Without noise, the system settles onto a limit 
+cycle of amplitude $|z|^2 = \mu/g \equiv A^{*2}$, 
+traversed at frequency~$\omega$.
+
+The deterministic drift decomposes exactly as
+\begin{equation}
+F = -\nabla V + J,
+\label{eq:decomp}
+\end{equation}
+with the radial potential 
+$V(r) = -\tfrac{\mu}{2}r^2 + \tfrac{g}{4}r^4$ 
+and the tangential rotation 
+$J = \omega(-x_2,\, x_1)$. Because $\nabla V$ is 
+radial and $J$ is tangential, $J \cdot \nabla V = 0$ 
+everywhere, and $\nabla \cdot J = 0$ trivially. This 
+decomposition is the unique one within the Graham 
+framework~\cite{Graham1977}: the potential is 
+fixed by the stationary distribution
+$\rho \propto e^{-V/\varepsilon}$, and $J = F + \nabla V$ 
+follows subject to $\nabla \cdot J = 0$ and 
+$J \cdot \nabla V = 0$. 
+The gradient part drives the system toward the 
+limit-cycle radius; the rotational part drives 
+circulation around it.
+
+We define the \emph{irreversible power} as the 
+steady-state average of the squared rotational velocity:
+\begin{equation}
+P_{\mathrm{irr}} 
+= \langle \|J\|^2 \rangle_{\mathrm{ss}} 
+= \omega^2 \langle r^2 \rangle_{\mathrm{ss}}.
+\label{eq:Pirr}
+\end{equation}
+Because the Langevin equation~\eqref{eq:SL} absorbs 
+unit friction into the time scale, $P_{\mathrm{irr}}$ 
+has dimensions of velocity-squared (equivalently, 
+power per unit friction). As such, $P_{\mathrm{irr}}$ 
+is a kinematic measure of rotational drive; it 
+acquires its thermodynamic meaning through the 
+entropy production rate, as follows.
+The steady-state 
+probability current is $\mathbf{j} = J\rho_{\mathrm{ss}}$ 
+(the gradient part generates $\rho_{\mathrm{ss}}$ and 
+carries no current~\cite{ZiaSchmittmann2007}), so the entropy production rate is
+\begin{equation}
+\dot{S} 
+= \int \frac{\|\mathbf{j}\|^2}{\varepsilon\,\rho_{\mathrm{ss}}}\,d^2x
+= \frac{1}{\varepsilon}\!\int \rho_{\mathrm{ss}}\|J\|^2\,d^2x
+= \frac{P_{\mathrm{irr}}}{\varepsilon}.
+\label{eq:EP}
+\end{equation}
+In the language of Hatano and Sasa~\cite{HatanoSasa2001}, 
+$P_{\mathrm{irr}}$ is the housekeeping component of 
+dissipation---the part sustained by the nonequilibrium 
+steady state itself, as opposed to relaxation toward it.
+The quantity $P_{\mathrm{irr}}$ remains finite 
+as $\varepsilon \to 0$; the entropy production 
+rate $\dot{S}$ diverges.
+
+
+%═══════════════════════════════════════════════
+\section{The bound}
+\label{sec:bound}
+%═══════════════════════════════════════════════
+
+The key geometric fact is that phase-space volume 
+grows linearly with radius in two dimensions 
+(the $r\,dr\,d\theta$ Jacobian). This biases 
+fluctuations outward, preventing noise from pushing 
+$\langle r^2 \rangle$ below $A^{*2}$. The 
+following theorem makes this precise.
+
+\begin{theorem}
+\label{thm:main}
+For the Stuart--Landau system~\eqref{eq:SL} with 
+$\mu > 0$, $\omega > 0$, $g > 0$, and isotropic 
+noise of intensity $\varepsilon > 0$,
+\begin{equation}
+\boxed{\;P_{\mathrm{irr}} \;\geq\; \omega^2\,A^{*2}\;}
+\label{eq:bound}
+\end{equation}
+with $A^{*2} = \mu/g$. Equality holds as 
+$\varepsilon \to 0$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step~1: Stationary distribution.}
+Since $\nabla \cdot J = 0$ and $J \cdot \nabla V = 0$, 
+the Fokker--Planck equation admits the exact 
+stationary solution
+$\rho(\mathbf{x}) = Z^{-1}\exp(-V(\mathbf{x})/\varepsilon)$
+\cite{Graham1977,Gardiner2009}.
+
+\emph{Step~2: Change of variables.}
+In polar coordinates, the marginal radial distribution is 
+$\rho(r) \propto r\,\exp(-V(r)/\varepsilon)$, 
+where the factor $r$ is the polar Jacobian. 
+Define $s = r^2$. Then $r = \sqrt{s}$ and 
+$dr = ds/(2\sqrt{s})$, so
+\begin{equation}
+p(s) \propto \exp\!\left(\frac{\mu s}{2\varepsilon} 
+- \frac{g s^2}{4\varepsilon}\right), \quad s \geq 0.
+\label{eq:ps}
+\end{equation}
+The Jacobian $r$ and the $1/\sqrt{s}$ from $dr/ds$ 
+cancel exactly, leaving a function of~$s$ alone. 
+Completing the square in the exponent:
+\begin{equation}
+p(s) \propto \exp\!\left(-\frac{g}{4\varepsilon}
+\Bigl(s - \tfrac{\mu}{g}\Bigr)^{\!2}\right), 
+\quad s \geq 0.
+\label{eq:gaussian}
+\end{equation}
+This is an exact Gaussian in~$s$, centered at 
+$s_0 = A^{*2}$ with variance $\sigma^2 = 2\varepsilon/g$, 
+restricted to $s \geq 0$. No approximation has been made.
+
+\emph{Step~3: Truncated Gaussian inequality.}
+For $X \sim \mathcal{N}(c, \sigma^2)$ conditioned on 
+$X \geq 0$ with $c > 0$~\cite{Johnson1994}:
+\begin{equation}
+\mathbb{E}[X \mid X \geq 0] = c + \sigma\,
+\frac{\varphi(-c/\sigma)}{\Phi(c/\sigma)} \;\geq\; c,
+\label{eq:trunc}
+\end{equation}
+where $\varphi$ and $\Phi$ are the standard normal 
+PDF and CDF. The correction is non-negative 
+($\varphi \geq 0$, $\Phi > 0$). 
+This is the \emph{only} inequality in the entire proof;
+every other step is an exact identity.
+Applying this with $c = A^{*2}$ and 
+$\sigma = \sqrt{2\varepsilon/g}$ gives 
+$\langle r^2 \rangle = \langle s \rangle \geq A^{*2}$, 
+and multiplying by $\omega^2$ yields the bound.
+
+\emph{Tightness.} As $\varepsilon \to 0$, 
+$\sigma \to 0$ and $\varphi/\Phi \to 0$, so 
+$\langle s \rangle \to A^{*2}$.
+\end{proof}
+
+\emph{Remarks.} (i)~The bound depends only on the 
+pattern parameters $\omega$ and $A^* = \sqrt{\mu/g}$, 
+not on the noise intensity~$\varepsilon$. 
+(ii)~The proof uses exact Gaussianity of $p(s)$, 
+not a perturbative expansion. 
+(iii)~Isotropic noise is essential; anisotropy 
+breaks the rotational symmetry of~$\rho$.
+
+Combining Eqs.~\eqref{eq:trunc} and the 
+identification $c = A^{*2}$, $\sigma = \sqrt{2\varepsilon/g}$ 
+gives the exact mean-square amplitude in closed form.
+Defining $\alpha \equiv A^{*2}/\sqrt{2\varepsilon/g}$
+for compactness:
+\begin{equation}
+\langle r^2\rangle = A^{*2} + \sqrt{\frac{2\varepsilon}{g}}\;
+\frac{\varphi(-\alpha)}
+{\Phi(\alpha)}.
+\label{eq:r2exact}
+\end{equation}
+When noise is weak ($\varepsilon \ll g A^{*4}/2$), 
+$\alpha \gg 1$, the correction 
+is exponentially small, and 
+$\langle r^2\rangle \to A^{*2}$. When noise dominates 
+($\varepsilon \gg g A^{*4}/2$), $\alpha \ll 1$, the distribution 
+is effectively half-Gaussian and 
+$\langle r^2\rangle \sim \sqrt{2\varepsilon/(\pi g)}$.
+In both limits, $\langle r^2\rangle \geq A^{*2}$.
+
+
+%═══════════════════════════════════════════════
+\section{Why steady patterns are different}
+\label{sec:steady}
+%═══════════════════════════════════════════════
+
+Does an analogous bound hold for steady 
+(non-oscillatory) patterns? No---and the failure 
+is illuminating.
+
+Consider the one-dimensional Landau equation for 
+a supercritical pitchfork bifurcation:
+\begin{equation}
+dx = (\mu x - g x^3)\,dt + \sqrt{2\varepsilon}\,dW.
+\label{eq:landau}
+\end{equation}
+The deterministic fixed point is at 
+$x^* = \sqrt{\mu/g}$, and the stationary 
+distribution in the positive well is 
+$\rho(x) \propto \exp(\mu x^2/(2\varepsilon) - g x^4/(4\varepsilon))$.
+
+Unlike the 2D oscillator, there is no Jacobian 
+factor; the quartic potential stays quartic in 
+the natural variable. Writing $x = x^* + \delta$
+and expanding to first order in $\varepsilon$:
+\begin{equation}
+\langle x^2 \rangle = A^{*2} - \frac{\varepsilon}{\mu} 
++ O(\varepsilon^2).
+\label{eq:1d_x2}
+\end{equation}
+The correction is \emph{negative}. To see why,
+note that 
+$\langle x^2 \rangle = x^{*2} + 2x^*\langle\delta\rangle 
++ \langle\delta^2\rangle$.
+The cubic anharmonicity of $V$ 
+(with $V'''(x^*) = 6g\,x^*$) gives 
+$\langle\delta\rangle = -3g\,x^*\,\mathrm{Var}(\delta)/(2\mu)
++ O(\varepsilon^2)$
+via the skewness of the potential well. The 
+resulting cross-term $2x^*\langle\delta\rangle 
+\sim -3\,\mathrm{Var}(\delta)$
+outweighs the variance contribution 
+$\langle\delta^2\rangle \sim \mathrm{Var}(\delta)$, 
+yielding the net reduction 
+$-2\,\mathrm{Var}(\delta) = -\varepsilon/\mu$.
+
+One might suspect the difference is simply 
+dimensional (1D vs.\ 2D). It is not. Consider two 
+\emph{uncoupled} pitchfork modes in two dimensions:
+\begin{equation}
+dx_i = (\mu x_i - g x_i^3)\,dt + \sqrt{2\varepsilon}\,dW_i, 
+\quad i = 1,2.
+\label{eq:2d_steady}
+\end{equation}
+The potential 
+$V = -\mu(x_1^2{+}x_2^2)/2 + g(x_1^4{+}x_2^4)/4$ 
+has discrete $\mathbb{Z}_4$ symmetry, not the 
+continuous $O(2)$ of the Hopf case. The 
+distribution factors, the polar trick fails, and 
+since each mode is conditioned on its positive well 
+independently:
+\begin{equation}
+\langle x_1^2 + x_2^2 \rangle 
+= 2\!\left(A^{*2} - \frac{\varepsilon}{\mu}\right) 
+< 2A^{*2}.
+\label{eq:2d_steady_result}
+\end{equation}
+
+The bound thus requires two ingredients acting 
+together: the two-dimensional Jacobian (which 
+provides the factor $r$) \emph{and} the continuous 
+$O(2)$ symmetry (which makes $V$ depend only on~$r$, 
+enabling $s = r^2$). The $O(2)$ symmetry is the 
+$U(1)$ phase symmetry of the Hopf normal form---a 
+direct consequence of the oscillatory character. 
+Steady bifurcations do not generate it.
+
+
+%═══════════════════════════════════════════════
+\section{Numerical verification}
+\label{sec:numerics}
+%═══════════════════════════════════════════════
+
+Figure~\ref{fig:main} and Tables~\ref{tab:exact}--\ref{tab:sweep} 
+compare exact Fokker--Planck quadrature results 
+for the oscillatory and steady cases, confirming 
+the analytical predictions of 
+Secs.~\ref{sec:bound} and~\ref{sec:steady}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig1.pdf}
+\caption{(a)~Ratio of mean-square amplitude to 
+deterministic value versus noise intensity 
+($\mu = 0.5$, $g = 1$). The oscillatory (Hopf) 
+ratio stays above unity for all~$\varepsilon$, 
+confirming the bound; the dashed curve is the 
+closed-form expression Eq.~\eqref{eq:r2exact}, 
+indistinguishable from exact quadrature. The 
+steady (pitchfork) ratio dips below unity at 
+moderate noise due to anharmonic skewness, then 
+rises above unity at large~$\varepsilon$ as 
+variance overwhelms the anharmonic shift.
+The shaded region marks where the bound would be 
+violated.
+(b)~Distribution $p(s)$ of $s = r^2$ at three 
+noise levels. Each curve is an exact Gaussian 
+truncated at $s = 0$, centered on $A^{*2} = 0.5$;
+increasing noise broadens the distribution and 
+shifts its mean to the right.}
+\label{fig:main}
+\end{figure}
+
+\begin{table}[ht]
+\caption{Ratio of mean-square amplitude to 
+deterministic value, from exact Fokker--Planck 
+integration ($\mu = 0.5$, $g = 1$, $A^{*2} = 0.5$). 
+The oscillatory ratio is always $\geq 1$; the 
+steady ratio is $< 1$ for $\varepsilon \lesssim 0.2$.
+At large~$\varepsilon$ the steady ratio also 
+exceeds unity, because the broadened distribution's 
+variance eventually overwhelms the anharmonic 
+shift---but unlike the oscillatory case, the 
+inequality $\langle x^2\rangle \geq A^{*2}$ does 
+not hold for all~$\varepsilon$.}
+\label{tab:exact}
+\begin{ruledtabular}
+\begin{tabular}{ccc}
+$\varepsilon$ & $\langle r^2\rangle/A^{*2}$ (oscillatory) & $\langle x^2\rangle/A^{*2}$ (steady) \\
+\hline
+0.001 & 1.0000 & 0.9960 \\
+0.01  & 1.0002 & 0.9521 \\
+0.05  & 1.077  & 0.831 \\
+0.1   & 1.220  & 0.865 \\
+0.5   & 2.018  & 1.290 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Table~\ref{tab:sweep} shows $\langle r^2 \rangle / A^{*2}$ 
+for the oscillatory case across a range of bifurcation 
+parameters. The bound is tightest when the pattern 
+is strong relative to noise ($\mu/\varepsilon \gg 1$), 
+where the truncated Gaussian sits well above zero. 
+At weak pattern strength, noise drives large radial 
+excursions, and the ratio grows well above unity.
+
+\begin{table}[ht]
+\caption{$\langle r^2\rangle / A^{*2}$ across 
+bifurcation parameters ($g = 1$, exact quadrature). 
+All entries $\geq 1$.}
+\label{tab:sweep}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$\mu$ & $\varepsilon{=}0.01$ & $\varepsilon{=}0.05$ & $\varepsilon{=}0.1$ & $\varepsilon{=}0.5$ \\
+\hline
+0.1 & 1.578 & 2.923 & 3.957 & 8.353 \\
+0.3 & 1.020 & 1.324 & 1.634 & 3.057 \\
+0.5 & 1.000 & 1.077 & 1.220 & 2.018 \\
+1.0 & 1.000 & 1.001 & 1.015 & 1.288 \\
+2.0 & 1.000 & 1.000 & 1.000 & 1.028 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+All tabulated values agree to full displayed precision 
+with the closed-form expression Eq.~\eqref{eq:r2exact} 
+and with direct Euler--Maruyama simulation 
+(not shown; deviations within statistical error 
+of $\sim 1\%$ at $T = 500$ time units per run).
+Code reproducing all numerical results and 
+Fig.~\ref{fig:main} is provided as Supplemental 
+Material~\cite{supplement}.
+
+
+%═══════════════════════════════════════════════
+\section{Discussion}
+\label{sec:discussion}
+%═══════════════════════════════════════════════
+
+\subsection{What the bound says and does not say}
+
+The bound $P_{\mathrm{irr}} \geq \omega^2 A^{*2}$ 
+states that faster oscillations and larger amplitudes 
+cost more irreversible power. The Stuart--Landau 
+oscillator achieves this minimum in the zero-noise 
+limit: its radial dynamics is purely gradient, and 
+its angular dynamics rotates at the minimum rate 
+set by~$\omega$.
+
+Two important caveats apply. First, the bound is 
+\emph{exact} for the Stuart--Landau normal form 
+but only \emph{approximate} for a physical system 
+near a Hopf bifurcation. Any such system reduces 
+to Eq.~\eqref{eq:SL} plus higher-order corrections 
+that are $O(|z|^4)$ or smaller; these break the 
+condition $J \cdot \nabla V = 0$. Sufficiently 
+close to onset ($\mu \to 0^+$), the corrections 
+are subdominant and the bound holds to leading 
+order. In particular, a nonlinear frequency 
+correction~$g_2$ (so that 
+$dz = (\mu+i\omega)z - (g_1+ig_2)|z|^2 z + \text{noise}$) 
+modifies~$J$ by adding a radial component 
+proportional to $g_2 r^2$, which breaks $J \cdot \nabla V = 0$.
+For small $|g_2/g_1|$, the effective rotation rate 
+increases at large $r$, so we expect the bound 
+to remain qualitatively valid but to become non-tight;
+a quantitative analysis of this case is left 
+for future work.
+
+Second, $P_{\mathrm{irr}}$ bounds the 
+noise-independent component of dissipation, 
+not the total. The entropy production rate 
+$\dot{S} = P_{\mathrm{irr}}/\varepsilon$ diverges 
+as $\varepsilon \to 0$, so in the regime where 
+the bound is tightest, the total thermodynamic cost 
+is dominated by the $1/\varepsilon$ factor. The 
+bound tells you the floor of the mechanical cost; 
+the actual energy bill depends on how noisy the 
+environment is.
+
+A complementary perspective comes from the 
+decomposition $F = -\nabla V + J$ itself. The 
+gradient part controls whether the pattern exists 
+(the instability threshold is $\alpha(S) = 0$ in 
+the self-adjoint sector); the rotational part~$J$ 
+drives the irreversible cost. These roles do not 
+mix: by the numerical range theorem, a purely 
+skew-adjoint perturbation cannot lower the spectral 
+abscissa of any linear 
+operator~\cite{HornJohnson2012}. The rotational 
+component can select the \emph{type} of 
+pattern---spirals over stripes, travelling waves 
+over standing 
+waves~\cite{BraunsMarchetti2024,FrohoffThiele2023}---but 
+the onset threshold is set entirely by the 
+self-adjoint (gradient) part. The bound derived here 
+quantifies the other side of this separation: the 
+rotational part sets the \emph{cost} floor.
+
+\subsection{Relation to the TUR}
+
+The thermodynamic uncertainty 
+relation~\cite{Barato2015,Gingrich2016} bounds 
+current fluctuations given an entropy production 
+budget: $\mathrm{Var}(\mathcal{J})/\langle\mathcal{J}\rangle^2 
+\geq 2/\dot{S}$ for any steady-state current 
+$\mathcal{J}$. The bound derived here is complementary: 
+it constrains entropy production given a pattern 
+amplitude, $\dot{S} \geq \omega^2 A^{*2}/\varepsilon$.
+The two bounds address different questions: the TUR 
+asks ``given a dissipation budget, how precise can 
+a current be?'', while the present bound asks 
+``given a pattern amplitude, what is the minimum 
+dissipation?''
+Applied to the angular current 
+$\mathcal{J}_\theta$ (winding number per unit time),
+the TUR yields 
+$\dot{S} \geq 2\langle\mathcal{J}_\theta\rangle^2 / 
+\mathrm{Var}(\mathcal{J}_\theta)$,
+which involves the phase-diffusion 
+constant~\cite{Cao2015} rather than the 
+mean-square amplitude $\langle r^2 \rangle$
+that enters our result.
+For the Stuart--Landau oscillator the 
+two bounds are consistent but neither implies the other, 
+as they constrain different observables of the 
+nonequilibrium steady state.
+
+\subsection{Extensions}
+
+Three directions remain open. (i)~\emph{Multiplicative 
+and anisotropic noise.} The proof requires isotropic 
+additive noise; breaking this invalidates the 
+Boltzmann-form stationary distribution. Most physical 
+oscillators (chemical clocks, genetic circuits) have 
+state-dependent noise, so extending the bound to 
+these cases is the most pressing open problem. 
+(ii)~\emph{Spatially extended patterns.} Travelling 
+waves and spiral waves in reaction-diffusion systems 
+are described by the complex Ginzburg--Landau equation, 
+where amplitude and frequency are space-dependent. 
+The Jacobian argument takes a different form in 
+infinite dimensions. (iii)~\emph{Other bifurcation 
+classes with continuous symmetry.} The $O(2)$ 
+symmetry that underlies our bound is specific 
+to Hopf. Whether analogous geometric mechanisms 
+exist for other bifurcation types (e.g.\ 
+Hopf--Turing interactions) is unknown.
+
+\subsection{A thermodynamic classification of bifurcations}
+
+In the standard classification of codimension-one 
+bifurcations~\cite{GolubitskyStewart1988}, a 
+temporal index~$t$ distinguishes Hopf ($t=1$) from 
+pitchfork/transcritical ($t=0$). Our results suggest 
+this index carries thermodynamic meaning, at least 
+within the normal-form setting: $t=1$ patterns 
+incur an irreducible cost proportional to 
+$\omega^2 A^{*2}$; $t=0$ patterns do not, because 
+they lack the rotational symmetry that prevents 
+anharmonic corrections from reducing the mean 
+amplitude.
+
+Whether this dividing line persists beyond normal 
+forms---in the full nonlinear dynamics of physical 
+systems---is the central open question raised by 
+this work.
+
+
+%═══════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%═══════════════════════════════════════════════
+
+We have shown that maintaining an oscillatory pattern 
+in the Stuart--Landau normal form costs at least 
+$P_{\mathrm{irr}} \geq \omega^2 A^{*2}$ in 
+irreversible power. The proof is three steps: 
+exact stationary distribution, Jacobian cancellation 
+converting $r^4$ into $s^2$, and a standard 
+truncated-Gaussian inequality. No analogous bound 
+exists for steady patterns. The oscillatory character 
+of a bifurcation---not its dimensionality alone---is 
+what creates the thermodynamic floor.
+
+
+%═══════════════════════════════════════════════
+\begin{acknowledgments}
+During the preparation of this work the 
+author used Claude~4.6 Opus, Gemini~3.1 Pro, and ChatGPT~5.2 
+for brainstorming, editing, mathematical and code verification, 
+and literature research. After using these tools, the author reviewed 
+and edited the content as needed and takes full responsibility 
+for the content of the published article.
+\end{acknowledgments}
+
+
+%═══════════════════════════════════════════════
+\begin{thebibliography}{99}
+
+\bibitem{Carnot1824} S.~Carnot, \emph{R\'eflexions sur la puissance motrice du feu} (Bachelier, Paris, 1824).
+
+\bibitem{Landauer1961} R.~Landauer, IBM J.\ Res.\ Dev.\ \textbf{5}, 183 (1961).
+
+\bibitem{Barato2015} A.~C.~Barato and U.~Seifert, Phys.\ Rev.\ Lett.\ \textbf{114}, 158101 (2015).
+
+\bibitem{Gingrich2016} T.~R.~Gingrich, J.~M.~Horowitz, N.~Perunov, and J.~L.~England, Phys.\ Rev.\ Lett.\ \textbf{116}, 120601 (2016).
+
+\bibitem{CrossHohenberg1993} M.~C.~Cross and P.~C.~Hohenberg, Rev.\ Mod.\ Phys.\ \textbf{65}, 851 (1993).
+
+\bibitem{Epstein1998} I.~R.~Epstein and J.~A.~Pojman, \emph{An Introduction to Nonlinear Chemical Dynamics} (Oxford University Press, 1998).
+
+\bibitem{Marchetti2013} M.~C.~Marchetti \emph{et al.}, Rev.\ Mod.\ Phys.\ \textbf{85}, 1143 (2013).
+
+\bibitem{England2013} J.~L.~England, J.\ Chem.\ Phys.\ \textbf{139}, 121923 (2013).
+
+\bibitem{Falasco2020} G.~Falasco, M.~Esposito, and J.-C.~Delvenne, New J.\ Phys.\ \textbf{22}, 053046 (2020).
+
+\bibitem{Seifert2012} U.~Seifert, Rep.\ Prog.\ Phys.\ \textbf{75}, 126001 (2012).
+
+\bibitem{Cao2015} Y.~Cao, H.~Wang, Q.~Ouyang, and Y.~Tu, Nat.\ Phys.\ \textbf{11}, 772 (2015).
+
+\bibitem{Oberreiter2022} L.~Oberreiter, U.~Seifert, and A.~C.~Barato, Phys.\ Rev.\ E \textbf{106}, 014106 (2022).
+
+\bibitem{Shiraishi2023} N.~Shiraishi, Phys.\ Rev.\ E \textbf{108}, L042103 (2023).
+
+\bibitem{Kuramoto1984} Y.~Kuramoto, \emph{Chemical Oscillations, Waves, and Turbulence} (Springer, 1984).
+
+\bibitem{Graham1977} R.~Graham, Z.\ Phys.\ B \textbf{26}, 397 (1977).
+
+\bibitem{ZiaSchmittmann2007} R.~K.~P.~Zia and B.~Schmittmann, J.\ Stat.\ Mech.\ (2007) P07012.
+
+\bibitem{HatanoSasa2001} T.~Hatano and S.~Sasa, Phys.\ Rev.\ Lett.\ \textbf{86}, 3463 (2001).
+
+\bibitem{Gardiner2009} C.~W.~Gardiner, \emph{Stochastic Methods}, 4th~ed.\ (Springer, 2009).
+
+\bibitem{Johnson1994} N.~L.~Johnson, S.~Kotz, and N.~Balakrishnan, \emph{Continuous Univariate Distributions}, Vol.~1, 2nd~ed.\ (Wiley, 1994).
+
+\bibitem{GolubitskyStewart1988} M.~Golubitsky, I.~Stewart, and D.~G.~Schaeffer, \emph{Singularities and Groups in Bifurcation Theory}, Vol.~II (Springer, 1988).
+
+\bibitem{HornJohnson2012} R.~A.~Horn and C.~R.~Johnson, \emph{Matrix Analysis}, 2nd~ed.\ (Cambridge University Press, 2012).
+
+\bibitem{BraunsMarchetti2024} F.~Brauns and M.~C.~Marchetti, Phys.\ Rev.\ X \textbf{14}, 021014 (2024).
+
+\bibitem{FrohoffThiele2023} T.~Frohoff-H\"ulsmann and U.~Thiele, Phys.\ Rev.\ Lett.\ \textbf{131}, 107201 (2023).
+
+\bibitem{supplement} See Supplemental Material for Python code reproducing all numerical results and figures.
+
+\end{thebibliography}
+
+\end{document}
